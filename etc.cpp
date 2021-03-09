@@ -1,4 +1,5 @@
 #include "etc.hpp"
+#include <ctime>
 
 // check if string consists only from dijits
 bool is_number(const std::string &s) {
@@ -9,7 +10,7 @@ bool is_number(const std::string &s) {
 std::string GetFileSeparator()
 {
     #ifdef _WIN32
-        return = "\\";
+        return "\\";
     #else
         return "/";
     #endif
@@ -38,10 +39,21 @@ void MakeParamsQueue( std::queue<std::string> &params,const std::string& command
 std::string getTimeStr()
 {
     auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
 
+    std::tm bt{};
+
+#if defined(__unix__)
+    localtime_r(&t, &bt);
+#elif defined(_MSC_VER)
+    localtime_s(&bt, &t);
+#else
+    static std::mutex mtx;
+    std::lock_guard<std::mutex> lock(mtx);
+    bt = *std::localtime(&t);
+#endif
+    
     std::ostringstream oss;
-    oss << std::put_time(&tm, "%Y.%m.%d %H:%M:%S");
+    oss << std::put_time(&bt, "%Y.%m.%d %H:%M:%S");
         
     return oss.str();
 }

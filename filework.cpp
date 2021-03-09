@@ -3,7 +3,7 @@
 WorkType FileWork::IdentifyWorkType()
 {
     //1 lets see if in file name have 'delete_' prefix in it's name
-    std::string name = inFile.filename();
+    std::string name = inFile.filename().u8string();
     if(name.find("delete_") == 0) // delete must be at the file start
     {
         auto pos = strlen("delete_"); // lets simplify a bit, and just store position from which real file name starts
@@ -19,13 +19,13 @@ WorkType FileWork::IdentifyWorkType()
             if(!ss.ios_base::fail()){
                 deletionTime = mktime(&t);
                 pos+=TSFormatSize+1;
-                std::string temp = outFile.filename();
+                std::string temp = outFile.filename().u8string();
                 outFile.replace_filename(temp.substr(pos));
                 return WorkType::ON_TIME_DELETE;
             }
         }
         
-        std::string temp = outFile.filename();
+        std::string temp = outFile.filename().u8string();
         outFile.replace_filename(temp.substr(pos));
         return WorkType::DELETE;
     }

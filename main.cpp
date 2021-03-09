@@ -65,7 +65,6 @@ void ShowFIlteredLog(const std::string logFile, const std::string filter, std::m
     }
     
     logFileStream.close();
-    
 }
 
 void LoggingProcessor(AppSynchro& app)
@@ -174,7 +173,10 @@ void ProcessDirectory(AppSynchro& app, std::filesystem::path& src, std::filesyst
             std::filesystem::path newsrc = p.path();
             ProcessDirectory(app, newsrc, newTarget, newExtension);
         }else{
-            std::string newTarget = target; newTarget += GetFileSeparator(); newTarget += p.path().filename(); newTarget += newExtension;
+            std::string newTarget(target.u8string()); 
+            newTarget += GetFileSeparator(); 
+            newTarget += p.path().filename().u8string();
+            newTarget += newExtension;
                 
             FileWork newWork( p.path(), newTarget);
                 
@@ -246,7 +248,7 @@ void DirectoryProcessor(AppSynchro& app)
                 {
                     std::string msg(e.what());
                     msg += " ";
-                    msg += target;
+                    msg += target.u8string();
                     app.StoreLogMessage(msg);
                 }
             }
@@ -256,7 +258,7 @@ void DirectoryProcessor(AppSynchro& app)
         {
             if(!firstTime)
             {
-                std::string msg = src;
+                std::string msg(src.u8string());
                 msg+=" - Input directory doesn't exist";
                 app.StoreLogMessage("ERROR: " + msg);
                 firstTime = false;
@@ -292,11 +294,11 @@ void FileWorksProcessor(AppSynchro& app)
             std::string logMessage;
             if(workItem.work == WorkType::DELETE)
             {
-                logMessage = RemoveFiles(workItem.inFile, workItem.outFile);
+                logMessage = RemoveFiles(workItem.inFile.u8string(), workItem.outFile.u8string());
             }
             else
             {
-                logMessage = CopyFile(workItem.inFile,workItem.outFile);
+                logMessage = CopyFile(workItem.inFile.u8string(),workItem.outFile.u8string());
             }
             
             app.StoreLogMessage(logMessage);
@@ -324,13 +326,11 @@ int main(int argc, const char * argv[])
     threads.push_back(std::thread ([&app](){LoggingProcessor(app);}));
     threads.push_back(std::thread ([&app](){DeleteOnTimeProcessor(app);}));
     
-    std::vector<std::thread> fileWorkThread;
-    
     if(app.config.threadsCnt == 0)
         app.config.threadsCnt = 1;
     
     for(int i = 0; i <app.config.threadsCnt; i++)
-        fileWorkThread.push_back(std::thread ([&app](){FileWorksProcessor(app);}));
+        threads.push_back(std::thread ([&app](){FileWorksProcessor(app);}));
     
     app.NotifyDirSet();
     

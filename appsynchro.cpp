@@ -65,7 +65,7 @@ void AppSynchro::GetLogMessage(std::string& msg)
 void AppSynchro::StoreOnTimeDelete(FileWork& workItem)
 {
     std::unique_lock<std::mutex> lock(delete_mutex);
-    onTimeDeleteMap[workItem.deletionTime].push_back(std::make_pair(workItem.inFile, workItem.outFile));
+    onTimeDeleteMap[workItem.deletionTime].push_back(std::make_pair(workItem.inFile.u8string(), workItem.outFile.u8string()));
     g_deleteCnt++;
     delete_cv.notify_one();
 }

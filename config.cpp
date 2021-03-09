@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "config.hpp"
+#include <filesystem>
 
 static const std::string_view confFile = "config.conf";   // the path to the config file
 
@@ -69,7 +70,7 @@ void Config::SaveConfigLine(std::string& key, std::string& value )
     }
     else if (key == "threads")
     {
-        threadsCnt = std::stod(value);
+        threadsCnt = std::stoi(value);
     }
 }
 
