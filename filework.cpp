@@ -16,7 +16,7 @@ WorkType FileWork::IdentifyWorkType()
             std::istringstream ss(tsPart);
             std::tm t = {0};
             ss >> std::get_time(&t, "%Y%m%d%H%M%S");
-            if(!ss.ios_base::fail()){
+            if(!ss.fail()){
                 deletionTime = mktime(&t);
                 pos+=TSFormatSize+1;
                 std::string temp = outFile.filename().u8string();

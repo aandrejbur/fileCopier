@@ -1,5 +1,7 @@
 #include "etc.hpp"
 #include <ctime>
+#include <algorithm>
+#include <string>
 
 // check if string consists only from dijits
 bool is_number(const std::string &s) {

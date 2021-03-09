@@ -7,7 +7,7 @@
 #include "config.hpp"
 #include <filesystem>
 
-static const std::string_view confFile = "config.conf";   // the path to the config file
+static const std::string confFile = "config.conf";   // the path to the config file
 
 const std::string help = {
     "THe application recursevely copies content from inoput directory into output directory\n"
@@ -30,7 +30,7 @@ const std::string help = {
 void Config::WriteConfigIntoFile()
 {
     std::ofstream ConfigFileStream;
-    ConfigFileStream.open(confFile, std::ofstream::out | std::ofstream::trunc);
+    ConfigFileStream.open(confFile, std::ios_base::out| std::ios_base::trunc);
     
     // i don't like a big parts of code to be copy pasted when there is no logic in it, so lets use lambda)
     auto PrintParam = [&ConfigFileStream](std::string name, std::string& value)

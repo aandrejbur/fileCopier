@@ -5,6 +5,7 @@
 #include <queue>
 #include <filesystem>
 #include <sstream>
+#include <condition_variable>
 
 #define TSFormatSize 14 // size of "YYYYMMDDhhmmss" format
 

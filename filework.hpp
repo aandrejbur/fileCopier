@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <string>
 #include <sstream>
+#include <cstring>
 #include "etc.hpp"
 
 enum class WorkType{SKIP = 0, COPY = 1, DELETE = 2, ON_TIME_DELETE = 3};
