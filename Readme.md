@@ -11,6 +11,12 @@ My current todo list:
 6) Refactor message formating
 7) CHange threads creation from lambda to normal way with usage of shared pointers. 
 8) And i will think for something more
+9) Create crossplatform build file (i think i will create cmake, but for that i will need to fix isssues with my Mac os configuration)
+10) Add some compression and remote storage of compressed versions - as configurable option
+11) add Some indexing way
+12) Investigate the way to not copy entire file but just append what missing (git way) - this will help to reduce disk usage
+
+And all of the above wasn't mplemented in the first time since I just didn't have enough time. And it wasn't a purpuse to build a production grade application in one day) 
 
 A simple way to copy (back up) files from one folder into another
 
