@@ -1,3 +1,17 @@
+I will continue updating this source code in my free tyme. 
+
+My current todo list:
+1) Allow multiple source (hot) directories to be watch (something like schema inside config file)
+2) Change the process into demon way (on all platforms) allowing it to be runned in background for all the time
+3) Change infrastructure a bit with implementation of patterns (now i think about factory, singleton and strategy) 
+4) Extend config file to support flushlog, filename action masks (i.e. "delete_" "delete_YYYYMMDDHHMMSS" and create more available actions)
+5) Create something like general log which will have messages for app status (begin, end) i.e.:
+        "DATE_TIME Task started with COMMAND_ARGUMETS, configured as: CONFIGURATION."
+        "DATE_TIME TASK finished ACTIONS_COUNTERS, elapsed time"
+6) Refactor message formating
+7) CHange threads creation from lambda to normal way with usage of shared pointers. 
+8) And i will think for something more
+
 A simple way to copy (back up) files from one folder into another
 
 The programm is written in C++ with only standard methods in use, so it is crossplatform as much as C++17 (i would use C++20 for semaphores but this way it is even beter)
