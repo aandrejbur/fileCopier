@@ -1,11 +1,15 @@
 I will continue updating this source code in my free tyme. 
 
 My current todo list:
-1) Allow multiple source (hot) directories to be watch (something like schema inside config file)
-2) Change the process into demon way (on all platforms) allowing it to be runned in background for all the time
-3) Change infrastructure a bit with implementation of patterns (now i think about factory, singleton and strategy) 
-4) Extend config file to support flushlog, filename action masks (i.e. "delete_" "delete_YYYYMMDDHHMMSS" and create more available actions)
-5) Create something like general log which will have messages for app status (begin, end) i.e.:
+
+1) Add way to not only copy files, but also move files from one directory to another (based on cofig)
+2) Add posibility to restore missing files from backup directory (based on cofig)
+3) Add support for symbolik links, and resolving possible cycle scenario
+4) Allow multiple source (hot) directories to be watch (something like schema inside config file)
+5) Change the process into demon way (on all platforms) allowing it to be runned in background for all the time
+6) Change infrastructure a bit with implementation of patterns (now i think about factory, singleton and strategy) 
+7) Extend config file to support flushlog, filename action masks (i.e. "delete_" "delete_YYYYMMDDHHMMSS" and create more available actions)
+8) Create something like general log which will have messages for app status (begin, end) i.e.:
         "DATE_TIME Task started with COMMAND_ARGUMETS, configured as: CONFIGURATION."
         "DATE_TIME TASK finished ACTIONS_COUNTERS, elapsed time"
 6) Refactor message formating
