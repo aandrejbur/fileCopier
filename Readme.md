@@ -67,11 +67,12 @@ My current todo list:
 1) Add way to not only copy files, but also move files from one directory to another (based on config)
 2) Add possibility to restore missing files from backup directory (based on config)
 3) Add support for symbolic links, and resolving possible cycle scenario
-4) Allow multiple source (hot) directories to be watch (something like schema inside config file)
-5) Change the process into demon way (on all platforms) allowing it to be runned in background for all the time
-6) Change infrastructure a bit with implementation of patterns (now i think about factory, singleton and strategy) 
-7) Extend config file to support flushlog, filename action masks (i.e. "delete_" "delete_YYYYMMDDHHMMSS" and create more available actions)
-8) Create something like general log which will have messages for app status (begin, end) i.e.:
+4) Add extension based file skipping
+5) Allow multiple source (hot) directories to be watch (something like schema inside config file)
+6) Change the process into demon way (on all platforms) allowing it to be runned in background for all the time
+7) Change infrastructure a bit with implementation of patterns (now i think about factory, singleton and strategy) 
+8) Extend config file to support flushlog, filename action masks (i.e. "delete_" "delete_YYYYMMDDHHMMSS" and create more available actions)
+9) Create something like general log which will have messages for app status (begin, end) i.e.:
         "DATE_TIME Task started with COMMAND_ARGUMETS, configured as: CONFIGURATION."
         "DATE_TIME TASK finished ACTIONS_COUNTERS, elapsed time"
 6) Refactor message formating
